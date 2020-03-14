@@ -3,11 +3,11 @@ package znet
 import (
 	"errors"
 	"fmt"
+	"github.com/aceld/zinx/utils"
+	"github.com/aceld/zinx/ziface"
 	"io"
 	"net"
 	"sync"
-	"zinx/utils"
-	"zinx/ziface"
 )
 
 type Connection struct {
@@ -25,7 +25,7 @@ type Connection struct {
 	ExitBuffChan chan bool
 	//无缓冲管道，用于读、写两个goroutine之间的消息通信
 	msgChan chan []byte
-	//有关冲管道，用于读、写两个goroutine之间的消息通信
+	//有缓冲管道，用于读、写两个goroutine之间的消息通信
 	msgBuffChan chan []byte
 
 	//链接属性
@@ -78,8 +78,8 @@ func (c *Connection) StartWriter() {
 					return
 				}
 			} else {
-				break
 				fmt.Println("msgBuffChan is Closed")
+				break
 			}
 		case <-c.ExitBuffChan:
 			return
@@ -194,7 +194,7 @@ func (c *Connection) RemoteAddr() net.Addr {
 //直接将Message数据发送数据给远程的TCP客户端
 func (c *Connection) SendMsg(msgId uint32, data []byte) error {
 	if c.isClosed == true {
-		return errors.New("Connection closed when send msg")
+		return errors.New("connection closed when send msg")
 	}
 	//将data封包，并且发送
 	dp := NewDataPack()

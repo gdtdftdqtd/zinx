@@ -8,6 +8,7 @@ Zinx 是一个基于Golang的轻量级并发服务器框架
 #### 开发者
 -   刘丹冰([@aceld](https://github.com/aceld))
 -   张超([@zhngcho](https://github.com/zhngcho))
+-   高智辉Roger([@adsian](https://github.com/adsian))
 
 
 ---
@@ -79,7 +80,7 @@ Zinx框架的项目制作采用编码和学习教程同步进行，将开发的�
 ### 快速开始
 
 #### server
-基于Zinx框架开发的服务器应用，主函数步骤比较精简，最多主需要3步即可。
+基于Zinx框架开发的服务器应用，主函数步骤比较精简，最多只需要3步即可。
 1. 创建server句柄
 2. 配置自定义路由及业务
 3. 启动服务
@@ -101,8 +102,8 @@ func main() {
 ```go
 import (
 	"fmt"
-	"zinx/ziface"
-	"zinx/znet"
+	"github.com/aceld/zinx/ziface"
+	"github.com/aceld/zinx/znet"
 )
 
 //ping test 自定义路由
@@ -133,7 +134,7 @@ import (
 	"io"
 	"net"
 	"time"
-	"zinx/znet"
+	"github.com/aceld/zinx/znet"
 )
 
 /*

@@ -2,14 +2,14 @@ package main
 
 import (
 	"fmt"
-	"zinx/ziface"
-	"zinx/zinx_app_demo/mmo_game/api"
-	"zinx/zinx_app_demo/mmo_game/core"
-	"zinx/znet"
+	"github.com/aceld/zinx/ziface"
+	"github.com/aceld/zinx/zinx_app_demo/mmo_game/api"
+	"github.com/aceld/zinx/zinx_app_demo/mmo_game/core"
+	"github.com/aceld/zinx/znet"
 )
 
 //当客户端建立连接的时候的hook函数
-func OnConnecionAdd(conn ziface.IConnection)  {
+func OnConnecionAdd(conn ziface.IConnection) {
 	//创建一个玩家
 	player := core.NewPlayer(conn)
 
@@ -44,7 +44,7 @@ func OnConnectionLost(conn ziface.IConnection) {
 		player.LostConnection()
 	}
 
-	fmt.Println("====> Player ", pid , " left =====")
+	fmt.Println("====> Player ", pid, " left =====")
 
 }
 

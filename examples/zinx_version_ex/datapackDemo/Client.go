@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
+	"github.com/aceld/zinx/znet"
 	"net"
-	"zinx/znet"
 )
 
 func main() {
@@ -50,5 +50,3 @@ func main() {
 	//客户端阻塞
 	select {}
 }
-
-
